@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class ClownMovement : MonoBehaviour {
 
-
-
 	Transform player;               // Reference to the player's position.
-	UnityEngine.AI.NavMeshAgent nav;               // Reference to the nav mesh agent.
 
-	void Awake ()
+	void Start ()
 	{
-		// Set up the references.
-		nav = GetComponent <UnityEngine.AI.NavMeshAgent> ();
+		player = GameObject.FindGameObjectWithTag ("Player").transform;
+
 	}
 
 	void Update ()
 	{
+		var moveSpeed = 3;
+		var rotationSpeed = 3;
+		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (player.position - transform.position), rotationSpeed * Time.deltaTime);
+		transform.position += transform.forward * moveSpeed * Time.deltaTime;
 	}
 }
