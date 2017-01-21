@@ -13,15 +13,20 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey(KeyCode.UpArrow)) {
 			GetComponent<Animator>().SetTrigger("Walk");
-			Vector3.Lerp(transform.position, transform.position += new Vector3(0.0f, 0.0f, 0.1f), 5.0f);
-
+			//Vector3.Lerp(transform.position, transform.position += new Vector3(0.0f, 0.0f, 0.1f), 5.0f);
+			/*
 			float moveHorizontal = Input.GetAxisRaw ("Horizontal");
 			float moveVertical = Input.GetAxisRaw ("Vertical");
 			Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-			transform.rotation = Quaternion.LookRotation(movement);
-			transform.Translate (movement *  5.0f * Time.deltaTime, Space.World);
-		} else if (Input.GetKey(KeyCode.DownArrow)) {
+			*/
+			//transform.rotation = Quaternion.LookRotation(movement);
+			//transform.Translate (movement *  5.0f * Time.deltaTime, Space.World);
+			//
+			Vector3.Lerp(transform.position, transform.position += this.transform.forward * Time.deltaTime * 9.0f, 1.0f);
+		}
+		if (Input.GetKey(KeyCode.DownArrow)) {
 			GetComponent<Animator>().SetTrigger("Walk");
+			/*
 			Vector3.Lerp(transform.position, transform.position += new Vector3(0.0f, 0.0f, -0.1f), 5.0f);
 
 			float moveHorizontal = Input.GetAxisRaw ("Horizontal");
@@ -29,17 +34,24 @@ public class Player : MonoBehaviour {
 			Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 			transform.rotation = Quaternion.LookRotation(movement);
 			transform.Translate (movement *  5.0f * Time.deltaTime, Space.World);
-		} else if (Input.GetKey(KeyCode.LeftArrow)) {
+			*/
+			Vector3.Lerp(transform.position, transform.position += this.transform.forward * Time.deltaTime * -9.0f, 1.0f);
+		}
+		if (Input.GetKey(KeyCode.LeftArrow)) {
 			GetComponent<Animator>().SetTrigger("Walk");
+			/*
 			Vector3.Lerp(transform.position, transform.position += new Vector3(-0.1f, 0.0f, 0.0f), 5.0f);
 
 			float moveHorizontal = Input.GetAxisRaw ("Horizontal");
 			float moveVertical = Input.GetAxisRaw ("Vertical");
 			Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 			transform.rotation = Quaternion.LookRotation(movement);
-			transform.Translate (movement *  5.0f * Time.deltaTime, Space.World);
-		} else if (Input.GetKey(KeyCode.RightArrow)) {
+			*/
+			this.transform.Rotate (Vector3.down * Time.deltaTime * 180.0f);
+		}
+		if (Input.GetKey(KeyCode.RightArrow)) {
 			GetComponent<Animator>().SetTrigger("Walk");
+			/*
 			Vector3.Lerp(transform.position, transform.position += new Vector3(0.1f, 0.0f, 0.0f), 5.0f);
 
 			float moveHorizontal = Input.GetAxisRaw ("Horizontal");
@@ -47,6 +59,8 @@ public class Player : MonoBehaviour {
 			Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 			transform.rotation = Quaternion.LookRotation(movement);
 			transform.Translate (movement *  5.0f * Time.deltaTime, Space.World);
+			*/
+			this.transform.Rotate (Vector3.up * Time.deltaTime * 180.0f);
 		}
 	}
 }
