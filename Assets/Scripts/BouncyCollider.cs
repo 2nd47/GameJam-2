@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BouncyWall : MonoBehaviour {
+public class BouncyCollider : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,5 +12,10 @@ public class BouncyWall : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void OnTriggerEnter (Collider other) {
+		Vector3 bounceDir = Vector3.Reflect (other.transform.position, this.transform.position);
+		//other.AddForce ();
 	}
 }
