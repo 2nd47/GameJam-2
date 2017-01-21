@@ -16,5 +16,6 @@ public class BouncyCollider : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 		Vector3 bounceDir = Vector3.Reflect (other.transform.position, this.transform.position);
+		//other.AddForce ();
 	}
 }
