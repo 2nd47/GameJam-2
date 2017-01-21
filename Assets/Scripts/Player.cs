@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -61,6 +62,13 @@ public class Player : MonoBehaviour {
 			transform.Translate (movement *  5.0f * Time.deltaTime, Space.World);
 			*/
 			this.transform.Rotate (Vector3.up * Time.deltaTime * 180.0f);
+		}
+	}
+
+	void OnTriggerEnter (Collider other) {
+		if (other.gameObject.tag == "Enemy") {
+			Destroy (this.gameObject);
+			SceneManager.LoadScene("LoseScreen");
 		}
 	}
 }
